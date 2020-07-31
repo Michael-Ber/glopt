@@ -1,0 +1,40 @@
+.work {
+    hr {
+        width: 148px;
+        height: 1px;
+        background-color: $main-color;
+        margin: 0 auto 17px;
+    }
+    padding: 51px 0 57px 0;
+    min-height: 620px;
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__column {
+        width: 360px;
+    }
+    &__img {
+        max-width: 360px;
+        max-height: 210px;
+        margin-bottom: 28px;
+    }
+    &__pic {
+        width: 100%;
+    }
+    &__title {
+        text-align: center;
+        color: $main-color;
+        font-size: 18px;
+        line-height: 20px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+    &__descr {
+        font-size: 14px;
+        font-weight: 300;
+        color: #3a3a3a;
+        text-align: center;
+       
+    }
+}
