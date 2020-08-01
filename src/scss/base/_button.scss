@@ -1,4 +1,7 @@
 .button {
+    display: block;
+    position:relative;
+    margin: 0 auto;
     width: 160px;
     height: 45px;
     background-color: $main-color;
@@ -8,6 +11,9 @@
     font-weight: 400;
     text-transform: uppercase;
     color: #ffffff;
+    &:hover {
+        background-color: #dc5238;
+    }
     &_main {
         display: block;
         width: 230px;
@@ -15,5 +21,12 @@
         font-size: 15px;
         font-weight: 700;
         margin: 0 auto;
+    }
+    &_form {
+
+        width: 180px;
+        height: 45px;
+        z-index: 1000;
+        margin-top: 25px;
     }
 }
