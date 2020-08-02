@@ -2,4 +2,35 @@
     min-height: 454px;
     padding: 51px 0 46px 0;
     background-color: #f3f3f3;
+    &__row {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        margin-bottom: 23px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    &__item {
+        width: 250px;
+    }
+    &__icon {
+        height: 57px;
+        img {
+            display: block;
+            margin: 0 auto;
+        }
+    }
+    &__title {
+        font-size: 16px;
+        font-weight: 700;
+        color: $main-color;
+        text-align: center;
+    }
+    &__descr {
+        font-size: 14px;
+        font-weight: 300;
+        color: #3a3a3a;
+        text-align: center;
+    }
 }

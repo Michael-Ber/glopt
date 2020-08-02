@@ -24,7 +24,7 @@ gulp.task('styles', function() {
         .pipe(rename({suffix: '.min', prefix: ''}))
         .pipe(autoprefixer())
         .pipe(cleanCSS({compatibility: 'ie8'}))
-        .pipe(gulp.dest("src/css"))
+        // .pipe(gulp.dest("src/css"))
         .pipe(gulp.dest("dist/css"))
         .pipe(browserSync.stream());
 });
@@ -32,6 +32,8 @@ gulp.task('styles', function() {
 gulp.task('watch', function() {
     gulp.watch("src/scss/**/*.+(scss|sass|css)", gulp.parallel('styles'));
     gulp.watch("src/*.html").on('change', gulp.parallel('html'));
+    gulp.watch("src/js/**/*.js", gulp.parallel('scripts'));
+
 });
 
 gulp.task('html', function () {
@@ -41,7 +43,7 @@ gulp.task('html', function () {
 });
 
 gulp.task('scripts', function () {
-    return gulp.src("src/script/**/*.js")
+    return gulp.src("src/js/**/*.js")
            .pipe(gulp.dest("dist/js"));
 });
 
