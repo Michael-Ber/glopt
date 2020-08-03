@@ -1,26 +1,38 @@
 .comments {
     min-height: 470px;
     padding: 51px 0 65px 0;
+    
     &__slider {
-        width: 1420px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: center;
+        
+        &-wrapper {
+            width: 601px;
+            margin: 0 auto;
+            position: relative;
+        }
+        &-container {
+            overflow: hidden;
+        }
+        &-track {
+            display: flex;
+            justify-content: flex-start;
+            transition: .5s all;
+        }
+        &-slide {
+            &:last-child {
+                margin: 0;
+            }
+        }
+        
         
     }
-    &__slide {
-       width: 361px;
-       margin-right: 45px;
-       &:last-child {
-           margin: 0;
-       }
-    }
+    
     &__img {
         margin-bottom: 19px;
-        img {
-            display: block;
-            margin: 0 auto;
-        }
+        width: 114px;
+        margin: 0 auto;
+        
+        
+        
     }
     &__name {
         text-align: center;
@@ -35,35 +47,33 @@
         text-align: center;
     }
     
-    
 }
-
-
-.activity {
-    position: relative;
-    opacity: 1;
-    width: 601px;
-    transform: scale(1);
+.owl-carousel .owl-nav {
+    position: absolute;
+    top: 35px;
+    left: 190px;
 }
-
-.prevArrow {
+.owl-carousel .owl-nav button.owl-prev {
+    width: 14px;
+    height: 46px;
     background: url('../../icons/left.png') center (center/cover) no-repeat;
+    margin-right: 190px;
+}  
+.owl-carousel .owl-nav button.owl-next {
     width: 14px;
     height: 46px;
-    position: absolute;
-    top: 35px;
-    left: 180px;
-    border: none;
-    cursor: pointer;
+    background: url('../../icons/right.png') center (center/cover) no-repeat;
+}  
+// }
+// .owl-next {
+//     display: none;
+// }
+
+.owl-carousel.owl-drag .owl-item {
+    width: 361px;
+}
+.owl-carousel.owl-drag .owl-item.active {
+    min-width: 601px;
 }
 
-.nextArrow {
-    background: url('../../icons/right.png') center (center/cover) no-repeat;
-    width: 14px;
-    height: 46px;
-    position: absolute;
-    top: 35px;
-    right: 180px;
-    border: none;
-    cursor: pointer; 
-}
+

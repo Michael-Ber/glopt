@@ -1,43 +1,50 @@
 // window.addEventListener('DOMContentLoaded', function() {
 
-//   //Slider
+//   //Slider native JS
 
-// 	const wrapper = document.querySelector('.comments__slider'),
-// 		slide = document.querySelectorAll('.comments__slide'),
-// 		width = window.getComputedStyle(wrapper).width,
+// 	const track = document.querySelector('.comments__slider-track'),
+// 		slidesToShow = 1,
+// 		slidesToScroll = 1,
+// 		slide = document.querySelectorAll('.comments__slider-slide'),
+// 		container = document.querySelector('.comments__slider-container'),
+// 		itemWidth = (+(window.getComputedStyle(container).width).slice(0, -2)) / slidesToShow,
 // 		prev = document.querySelector('.prevArrow'),
-// 		next = document.querySelector('.nextArrow');
-  
-// 	let offset = 710,
-// 		slideIndex = 1;
-
+// 		next = document.querySelector('.nextArrow'),
+// 		movePosition = itemWidth * slidesToScroll;
+		
+// 	let offset = 0;
+// 	slide.forEach((slide) => {
+// 		slide.style.minWidth = `${itemWidth}px`;
+// 	});
 
 // 	prev.addEventListener('click', () => {
-// 		if (offset < 0) {
-// 			offset = +width.slice(0, -2);
-// 			slideIndex = 2;
+		
+// 		if (offset >= 0) {
+// 			offset = (-(itemWidth) * (slide.length-1));
 // 		} else {
-// 			offset -= 710;
-// 			slideIndex -= 1;
+// 			offset += +movePosition;
 // 		}
-
-// 		slide[slideIndex].style.transform = `translateX(${-offset}px)`;
-
-
+// 		track.style.transform = `translateX(${offset}px)`;
 // 	});
-    
+//     next.addEventListener('click', () => {
+// 		if (offset <= (-(itemWidth) * (slide.length-1))) {
+// 			offset = 0;
+// 		} else {
+// 			offset -= +movePosition;
+// 		}
+// 		console.log(offset, movePosition);
+// 		track.style.transform = `translateX(${offset}px)`;
+// 	});
 // });
 
 $(document).ready(function(){
-	$(".comments__slider").owlCarousel({
+	$(".owl-carousel").owlCarousel({
+		items: 1,
+		loop: true,
+		nav: true,
+		dots: false,
 		center: true,
-		items:1,
-		loop:true,
-		margin:3,
-		responsive:{
-			600:{
-				items:1
-			}
-		}
+		// navContainer: '.comments__slider-nav',
+		navText : ["",""]
 	});
   });
