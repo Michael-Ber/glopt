@@ -5,7 +5,7 @@
     &__slider {
         
         &-wrapper {
-            width: 1600px;
+            width: 1803px;
             margin: 0 auto;
             position: relative;
         }
@@ -15,13 +15,14 @@
         &-track {
             display: flex;
             justify-content: flex-start;
+            align-items: center;
             transition: .5s all;
         }
         &-slide {
             width: 361px;
             margin: 0 auto;
             opacity: .3;
-            transform: scale(.6);
+            // transform: scale(.60067);
             transition: .5s all;
         } 
     }
@@ -76,8 +77,8 @@
     background: url('../../icons/left.png') center (center/cover) no-repeat;
     border: none;
     position: absolute;
-    top: 35px;
-    left: 190px;
+    top: 14%;
+    left: 44%;
 }
 .nextArrow {
     width: 14px;
@@ -85,8 +86,8 @@
     background: url('../../icons/right.png') center (center/cover) no-repeat;
     border: none;
     position: absolute;
-    top: 35px;
-    right: 190px;    
+    top: 14%;
+    right: 44%;    
 }
 
 // .owl-carousel .owl-drag .owl-item {
