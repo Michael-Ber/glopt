@@ -1,17 +1,33 @@
 .feed-form {
     &__inputs {
-        display: flex;
-        justify-content: center;
+        div {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 6px;
+            
+        }
         
     }
-    input {
+    &__input {
         border: 1px solid #898989;
         border-radius: 20px;
         min-width: 270px;
-        height: 46px;
+        height: 47px;
         padding: 0 30px;
-        &:nth-child(2) {
-            margin: 0 7px;
+        &_m4 {
+            margin: 0 4px;
+        }
+        &_message {
+            display: block;
+            min-width: 818px;
+            height: 73px;
+            margin: 0 auto;
+            border: 1px solid #898989;
+            border-radius: 20px;
+            padding: 0 30px;
         }
     }
+    
+    
+    
 }
