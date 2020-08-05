@@ -40,8 +40,9 @@ window.addEventListener('DOMContentLoaded', function() {
 
 		if(slideIndex <= slide.length-2) {
 			slide[slideIndex+1].style.transform = `scale(${361/itemWidth})`; //autoScale for small frames
+		} else {
+			slide[0].style.transform = `scale(${361/itemWidth})`;
 		}
-
 		removeActive();
 		activeSlide(slideIndex);
 
@@ -55,12 +56,13 @@ window.addEventListener('DOMContentLoaded', function() {
 			offset -= +movePosition;
 			slideIndex += (1*slidesToScroll);
 		}
-
 		track.style.transform = `translateX(${offset}px)`;
 		slide[slideIndex].style.transform = `scale(${1})`;
 
 		if(slideIndex > 0) {
 			slide[slideIndex-1].style.transform = `scale(${361/itemWidth})`;
+		} else {
+			slide[slide.length-1].style.transform = `scale(${361/itemWidth})`;
 		}
 
 		removeActive();
@@ -78,20 +80,9 @@ window.addEventListener('DOMContentLoaded', function() {
 	}
 
 
-
-
-	//MAP
-
-	let map;
-
-	function initMap() {
-		map = new google.maps.Map(document.getElementById("map"), {
-			center: { lat: -34.397, lng: 150.644 },
-			zoom: 8
-		});
-	}
-
 });
+
+
 
 // owl carousel 2 
 // $(document).ready(function(){

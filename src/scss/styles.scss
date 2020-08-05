@@ -15,6 +15,13 @@
 .container {
     max-width: 1140px;
     margin: 0 auto;
+    &_line {
+        max-width: 1171px;
+    }
+}
+
+.address {
+    line-height: 0;
 }
 
 
@@ -33,4 +40,4 @@
 @import "blocks/workus";
 @import "blocks/comments";
 @import "blocks/questions";
-@import "blocks/address";
+@import "blocks/footer";

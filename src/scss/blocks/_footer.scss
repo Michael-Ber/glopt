@@ -1,0 +1,77 @@
+.footer {
+    min-height: 201px;
+    background-color: #25333c;
+    padding: 24px 0 28px 0;
+    &__info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__call {
+        display: flex;
+        justify-content: center;
+        &-wrapper {
+            margin-right: 18px;
+            span {
+                display: block;
+                font-size: 14px;
+                font-weight: 300;
+                color: #ffffff;
+                text-align: right;
+            }
+        }
+    }
+    &__name  {
+        span {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-left: 43px;
+        }
+    }
+    &__img {
+        width: 68px;
+        height: 71px;
+    }
+    &__line {
+        width: 100%;
+        height: 1px;
+        background-color: rgba(255, 255, 255, .3);
+        border: none;
+        margin-top: 26px;
+    }
+    &__links {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__link {
+        font-size: 13px;
+        font-weight: 300;
+        color: rgba(255, 255, 255, .6);
+        &:hover {
+            color: rgba(255, 255, 255, .6);
+            text-decoration: none;
+        }
+        
+        &_politic {
+            font-size: 13px;
+            font-weight: 300;
+            text-decoration: underline;
+            color: $main-color;
+            text-decoration-skip-ink: none;
+            &:hover {
+                color: $main-color;
+                text-decoration: underline;
+            }
+        }
+        &-logo {
+            span {
+                font-size: 13px;
+                font-weight: 300;
+                color: rgba(255, 255, 255, .6);
+                margin-right: 10px;
+            }
+        }
+    }
+}
