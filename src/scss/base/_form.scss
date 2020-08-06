@@ -1,10 +1,26 @@
 .feed-form {
     &__inputs {
-        div {
+        &-wrapper {
             display: flex;
             justify-content: center;
             margin-bottom: 6px;
-            
+            .input-wrapper {
+                z-index: 1000;
+                // display: flex;
+                // flex-direction: column;
+                // align-items: center;
+                // justify-content: center;
+                label {
+                    display: block;
+                    color: red;
+                    font-size: 12px;
+                    margin: 7px 0 0 30px;
+                }
+                input {
+                    display: block;
+                    outline: none;
+                }
+            }
         }
         
     }

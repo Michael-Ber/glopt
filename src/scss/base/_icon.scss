@@ -1,6 +1,9 @@
 .icon-title {
     margin-bottom: 20px;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     &__circle {
         position: relative;
         width: 102px;
@@ -24,6 +27,7 @@
             &:before {
                 background: url('../../icons/woman.png') center (center/cover) no-repeat;
             }
+            margin: 0 13px;
         }
         &_managers {
             &:before {
