@@ -5,7 +5,7 @@
     &__slider {
         
         &-wrapper {
-            width: 1803px;
+            width: calc(100% - 101px);
             margin: 0 auto;
             position: relative;
         }
@@ -19,11 +19,14 @@
             transition: .5s all;
         }
         &-slide {
-            width: 361px;
+            // width: calc(100%/3*0.60066);
             margin: 0 auto;
             opacity: .3;
             transition: .5s all;
         } 
+        &-nav {
+            display: block;
+        }
     }
     
     &__img {
@@ -43,12 +46,23 @@
         font-weight: 300;
         text-align: center;
     }
+    &__arrows {
+        width: 210px;
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 50%);
+        top: 0;
+        z-index: 1000;
+    }
     
 }
 .active {
-    width: 601px;
+    width: calc(100%/3);
     opacity: 1;
     transform: scale(1);
+    
 }
 // .owl-carousel .owl-nav {
 //     position: absolute;
@@ -70,24 +84,7 @@
 //     overflow: visible;
 // }
 
-.prevArrow {
-    width: 14px;
-    height: 46px;
-    background: url('../../icons/left.png') center (center/cover) no-repeat;
-    border: none;
-    position: absolute;
-    top: 14%;
-    left: 44%;
-}
-.nextArrow {
-    width: 14px;
-    height: 46px;
-    background: url('../../icons/right.png') center (center/cover) no-repeat;
-    border: none;
-    position: absolute;
-    top: 14%;
-    right: 44%;    
-}
+
 
 // .owl-carousel .owl-drag .owl-item {
 //     width: 361px;
@@ -97,3 +94,23 @@
 // }
 
 
+.prevArrow {
+    width: 14px;
+    height: 46px;
+    background: url('../../icons/left.png') center (center/cover) no-repeat;
+    border: none;
+    // position: absolute;
+    // top: 14%;
+    // left: 44%;
+    // z-index: 1000;
+}
+.nextArrow {
+    width: 14px;
+    height: 46px;
+    background: url('../../icons/right.png') center (center/cover) no-repeat;
+    border: none;
+    // position: absolute;
+    // top: 14%;
+    // right: 44%;  
+    // z-index: 1000; 
+}

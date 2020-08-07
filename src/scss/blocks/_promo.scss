@@ -1,7 +1,7 @@
 .promo {
     min-height: 680px;
     background: url('../../img/bg/firstScreenBG.jpg') center (center/cover) no-repeat;
-    padding: 23px 0 82px 0;
+    padding: 23px 0 82px 0; //100px
     &__logo {
         width: 96px;
         height: 100px;
@@ -10,7 +10,8 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        margin-bottom: 9px;
+        // position: fixed;
+        // top: 23px;
         &-call {
             display: flex;
             flex-direction: column;
@@ -95,6 +96,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-top: 9px;
         &-subtitle1 {
             font-size: 24px;
             font-weight: 300;

@@ -7,26 +7,25 @@ window.addEventListener('DOMContentLoaded', function() {
 		slidesToScroll = 1,
 		slide = document.querySelectorAll('.comments__slider-slide'),
 		container = document.querySelector('.comments__slider-container'),
-		itemWidth = (+(window.getComputedStyle(container).width).slice(0, -2)) / slidesToShow - 1202,
+		itemWidth = (+(window.getComputedStyle(container).width).slice(0, -2)) / 3,
 		prev = document.querySelector('.prevArrow'),
 		next = document.querySelector('.nextArrow'),
 		movePosition = itemWidth * slidesToScroll;
-
 	let offset = 0,
 		slideIndex = 1;
 	
 	slide.forEach((slide) => {
-		slide.style.minWidth = `${itemWidth}px`;
-		slide.style.transform = `scale(${361/itemWidth})`;
+		slide.style.width = `${itemWidth}px`;
+		slide.style.transform = `scale(${0.60066})`;
 		if(slide.classList.contains('active')) {
 			slide.style.transform = `scale(${1})`;
 		}
 	});
 
-	
+	console.log(itemWidth);
 	
 	prev.addEventListener('click', () => {
-
+		console.log('left');
 		if (offset >= itemWidth) {
 			offset = (-(itemWidth) * (slide.length-2)); //так как при загрузке страницы центральный кадр не первый слайд в html
 			slideIndex = slide.length - 1;				//то офсет на движение track сдвигаем на 2 слайда
@@ -34,14 +33,14 @@ window.addEventListener('DOMContentLoaded', function() {
 			offset += +movePosition;
 			slideIndex -= (1*slidesToScroll);
 		}
-
+		console.log(offset);
 		track.style.transform = `translateX(${offset}px)`;
 		slide[slideIndex].style.transform = `scale(${1})`; //central frame scale=1 opacity=1
 
 		if(slideIndex <= slide.length-2) {
-			slide[slideIndex+1].style.transform = `scale(${361/itemWidth})`; //autoScale for small frames
+			slide[slideIndex+1].style.transform = `scale(${0.60066})`; //autoScale for small frames
 		} else {
-			slide[0].style.transform = `scale(${361/itemWidth})`;
+			slide[0].style.transform = `scale(${0.60066})`;
 		}
 		removeActive();
 		activeSlide(slideIndex);
@@ -60,9 +59,9 @@ window.addEventListener('DOMContentLoaded', function() {
 		slide[slideIndex].style.transform = `scale(${1})`;
 
 		if(slideIndex > 0) {
-			slide[slideIndex-1].style.transform = `scale(${361/itemWidth})`;
+			slide[slideIndex-1].style.transform = `scale(${0.60066})`;
 		} else {
-			slide[slide.length-1].style.transform = `scale(${361/itemWidth})`;
+			slide[slide.length-1].style.transform = `scale(${0.60066})`;
 		}
 
 		removeActive();
