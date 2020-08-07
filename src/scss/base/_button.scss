@@ -26,10 +26,14 @@
         width: 180px;
         height: 45px;
         z-index: 1000;
-        // margin-top: 25px;
-        margin: 0 13px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%);
     }
     &_mt16 {
+        width: 180px;
+        height: 45px;
         margin-top: 16px;
     }
 }

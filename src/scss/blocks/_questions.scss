@@ -1,5 +1,5 @@
 .questions {
-    min-height: 438px;
+    height: 438px;
     padding: 62px 0 79px 0;
     background: url('../../img/bg/questions_bg.jpg') center (center/cover) no-repeat;
     &__title {
@@ -27,9 +27,8 @@
     }
     &__content {
         width: 896px;
-        height: 229px;
         background-color: rgba(255, 255, 255, .7);
         margin: 0 auto;
-        padding-top: 17px;
+        padding: 17px 0 25px 0;
     }
 }

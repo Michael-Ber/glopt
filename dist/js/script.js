@@ -93,36 +93,45 @@ window.addEventListener('DOMContentLoaded', function() {
 	});
 	
 	function validateForm(form) {
-		$(document).ready(function() {
-			$(form).validate({
-				rules: {
-					name: {
-						required: true,
-						minlength: 3
-					},
-					phone: "required",
-					email: {
-						required: true,
-						email: true,
-					}
-				},
-				messages: {
-					name: {
-						required: "Пожалуйста введите имя",
-						minlength: "Имя не должно быть менее 3 символов"
-					},
-					phone: "Необходимо ввести номер телефона",
-					email: {
-						required: "Введите почтовый адрес",
-						email: "Введите правильный почтовый адрес"
-					}
-				}
-			});
-		});	
-	}
-	validateForm('#consultation-form');
-	validateForm('#questions-form');
 
+		let validator = $(form).validate({
+			rules: {
+				name: {
+					required: true,
+					minlength: 3
+				},
+				phone: "required",
+				email: {
+					required: true,
+					email: true,
+				}
+			},
+			messages: {
+				name: {
+					required: "Пожалуйста введите имя",
+					minlength: "Имя не должно быть менее 3 символов"
+				},
+				phone: "Необходимо ввести номер телефона",
+				email: {
+					required: "Введите почтовый адрес",
+					email: "Введите правильный почтовый адрес"
+				}
+			}
+		});
+	}
+
+	const consulValidated = validateForm('#consultation-form');
+	const questValidated = validateForm('#questions-form');
+	
+	//mask phone number
+
+	$("input[name=phone]").mask("+7 (999) 999-9999");
+	
+	
+
+	
+	
+	
 
 });
 

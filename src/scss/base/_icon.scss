@@ -22,12 +22,16 @@
             height: 51px;
         }
         &_consultation {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
             border: 1px solid $main-color;
             z-index: 1000;
             &:before {
                 background: url('../../icons/woman.png') center (center/cover) no-repeat;
             }
-            margin: 0 13px;
+            // margin: 0 auto;
         }
         &_managers {
             &:before {
