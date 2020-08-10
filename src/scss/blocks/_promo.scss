@@ -23,6 +23,7 @@
                 color: #ffffff;
             }
         }
+        
         &-tel {
             display: block;
             color: #fff;
@@ -36,6 +37,12 @@
         }
        
     }
+    &__row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
     
     .menu {
         display: flex;
@@ -43,6 +50,7 @@
         padding: 0;
         list-style-type: none;
         margin: 0 50px 0 53px;
+
         &__item {
             padding-right: 12px;
             display: flex;
@@ -170,6 +178,23 @@
         font-weight: 300;
         color: #ffffff;
         text-align: center;
+    }
+
+    &__hamburger {
+        display: none;
+        width: 25px;
+        &-line {
+            margin: 6px 0;
+        }
+        &:active {
+            opacity: .1;
+            &-line {
+                &:first-child {
+                    transform: rotate(45deg);
+                }
+            }
+        }
+        
     }
 
 

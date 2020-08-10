@@ -3,7 +3,7 @@
     padding: 62px 0 79px 0;
     background: url('../../img/bg/questions_bg.jpg') center (center/cover) no-repeat;
     &__title {
-        width: 896px;
+        width: 100%; //896px
         height: 68px;
         background-color: #25333c;
         margin: 0 auto;
@@ -26,9 +26,9 @@
         font-weight: 400;
     }
     &__content {
-        width: 896px;
+        width: 100%; //896px
         background-color: rgba(255, 255, 255, .7);
         margin: 0 auto;
-        padding: 17px 0 25px 0;
+        padding: 17px 40px 25px 40px;
     }
 }

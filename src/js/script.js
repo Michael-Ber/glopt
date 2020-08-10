@@ -22,7 +22,6 @@ window.addEventListener('DOMContentLoaded', function() {
 		}
 	});
 
-	console.log(itemWidth);
 	
 	prev.addEventListener('click', () => {
 		console.log('left');
@@ -126,7 +125,19 @@ window.addEventListener('DOMContentLoaded', function() {
 
 	$("input[name=phone]").mask("+7 (999) 999-9999");
 	
-	
+	// promo Hamburger
+
+	const hamburger = document.querySelector('.promo__hamburger'),
+		  menu = document.querySelector('.promo__nav'),
+		  lines = document.querySelectorAll('.promo__hamburger-line');
+
+	hamburger.addEventListener('click', () => {
+		menu.classList.toggle('opened');
+		lines[1].classList.toggle('opened-hamb');
+		lines[0].style.cssText = `
+			
+		`
+	});
 
 	
 	
@@ -136,15 +147,3 @@ window.addEventListener('DOMContentLoaded', function() {
 
 
 
-// owl carousel 2 
-// $(document).ready(function(){
-// 	$(".owl-carousel").owlCarousel({
-// 		items: 1,
-// 		loop: true,
-// 		nav: true,
-// 		dots: false,
-// 		center: true,
-// 		// navContainer: '.comments__slider-nav',
-// 		navText : ["",""]
-// 	});
-//   });
