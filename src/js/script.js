@@ -133,10 +133,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
 	hamburger.addEventListener('click', () => {
 		menu.classList.toggle('opened');
-		lines[1].classList.toggle('opened-hamb');
-		lines[0].style.cssText = `
-			
-		`
+		hamburger.classList.toggle('promo__hamburger_active');
+		
 	});
 
 	

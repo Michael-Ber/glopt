@@ -182,18 +182,33 @@
 
     &__hamburger {
         display: none;
-        width: 25px;
-        &-line {
-            margin: 6px 0;
+        span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: #fff;
+            margin-bottom: 5px;
+            
         }
-        &:active {
-            opacity: .1;
-            &-line {
-                &:first-child {
+        &_active {
+            span {
+                margin: -2px 0;
+                &:nth-child(1) {
                     transform: rotate(45deg);
+                    transition: .5s all;
+                }
+                &:nth-child(2) {
+                    display: none;
+                }
+                &:nth-child(3) {
+                    transform: rotate(-45deg);
+                    transition: .5s all;
                 }
             }
+            
         }
+        
+        
         
     }
 
