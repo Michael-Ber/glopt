@@ -1,9 +1,8 @@
 .comments {
     min-height: 470px;
     padding: 51px 0 65px 0;
-    
+
     &__slider {
-        
         &-wrapper {
             width: calc(100% - 101px);
             margin: 0 auto;
@@ -19,7 +18,6 @@
             transition: .5s all;
         }
         &-slide {
-            // width: calc(100%/3*0.60066);
             margin: 0 auto;
             opacity: .3;
             transition: .5s all;
@@ -64,53 +62,15 @@
     transform: scale(1);
     
 }
-// .owl-carousel .owl-nav {
-//     position: absolute;
-//     top: 35px;
-//     left: 190px;
-// }
-// .owl-carousel .owl-nav button.owl-prev {
-//     width: 14px;
-//     height: 46px;
-//     background: url('../../icons/left.png') center (center/cover) no-repeat;
-//     margin-right: 190px;
-// }  
-// .owl-carousel .owl-nav button.owl-next {
-//     width: 14px;
-//     height: 46px;
-//     background: url('../../icons/right.png') center (center/cover) no-repeat;
-// }  
-// .owl-carousel .owl-stage-outer {
-//     overflow: visible;
-// }
-
-
-
-// .owl-carousel .owl-drag .owl-item {
-//     width: 361px;
-// }
-// .owl-carousel .owl-drag .owl-item.active {
-//     min-width: 601px;
-// }
-
-
 .prevArrow {
     width: 14px;
     height: 46px;
     background: url('../../icons/left.png') center (center/cover) no-repeat;
     border: none;
-    // position: absolute;
-    // top: 14%;
-    // left: 44%;
-    // z-index: 1000;
 }
 .nextArrow {
     width: 14px;
     height: 46px;
     background: url('../../icons/right.png') center (center/cover) no-repeat;
     border: none;
-    // position: absolute;
-    // top: 14%;
-    // right: 44%;  
-    // z-index: 1000; 
 }

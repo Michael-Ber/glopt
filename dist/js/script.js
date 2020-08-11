@@ -7,32 +7,41 @@ window.addEventListener('DOMContentLoaded', function() {
 		slidesToScroll = 1,
 		slide = document.querySelectorAll('.comments__slider-slide'),
 		container = document.querySelector('.comments__slider-container'),
-		itemWidth = (+(window.getComputedStyle(container).width).slice(0, -2)) / 3,
 		prev = document.querySelector('.prevArrow'),
 		next = document.querySelector('.nextArrow'),
-		movePosition = itemWidth * slidesToScroll;
-	let offset = 0,
+		activeSlide = document.querySelector('.comments__slider-slide.active');
+
+	let itemWidth,
+		offset = 0,
 		slideIndex = 1;
-	
+	if(window.matchMedia('(max-width: 767px)').matches) {
+		itemWidth = (+(window.getComputedStyle(container).width).slice(0, -2));
+		track.style.width = `${100 * slide.length}%`;
+	}else {
+		itemWidth = (+(window.getComputedStyle(container).width).slice(0, -2)) / 3;
+	}
+	const movePosition = itemWidth * slidesToScroll;
+	if(window.matchMedia('(max-width: 767px)').matches) {
+		slideIndex = 0;
+		slide[slideIndex].classList.add('active');
+		slide[slideIndex+1].classList.remove('active');
+	}
 	slide.forEach((slide) => {
-		slide.style.width = `${itemWidth}px`;
+		slide.style.minWidth = `${itemWidth}px`;
 		slide.style.transform = `scale(${0.60066})`;
 		if(slide.classList.contains('active')) {
 			slide.style.transform = `scale(${1})`;
 		}
 	});
-
-	
 	prev.addEventListener('click', () => {
-		console.log('left');
-		if (offset >= itemWidth) {
-			offset = (-(itemWidth) * (slide.length-2)); //так как при загрузке страницы центральный кадр не первый слайд в html
+		if (offset >= 0) {
+			offset = (-(itemWidth) * (slide.length-1)); //так как при загрузке страницы центральный кадр не первый слайд в html
 			slideIndex = slide.length - 1;				//то офсет на движение track сдвигаем на 2 слайда
 		} else {
 			offset += +movePosition;
 			slideIndex -= (1*slidesToScroll);
 		}
-		console.log(offset);
+		console.log(offset, slideIndex);
 		track.style.transform = `translateX(${offset}px)`;
 		slide[slideIndex].style.transform = `scale(${1})`; //central frame scale=1 opacity=1
 
@@ -42,18 +51,13 @@ window.addEventListener('DOMContentLoaded', function() {
 			slide[0].style.transform = `scale(${0.60066})`;
 		}
 		removeActive();
-		activeSlide(slideIndex);
+		addActiveSlide(slideIndex);
 
 	});
     next.addEventListener('click', () => {
 
-		if (offset <= (-(itemWidth) * (slide.length-2))) {
-			offset = itemWidth*slidesToScroll;
-			slideIndex = 0;
-		} else {
-			offset -= +movePosition;
-			slideIndex += (1*slidesToScroll);
-		}
+		adjustMediaNextBtn();
+		console.log(offset, slideIndex);
 		track.style.transform = `translateX(${offset}px)`;
 		slide[slideIndex].style.transform = `scale(${1})`;
 
@@ -64,11 +68,89 @@ window.addEventListener('DOMContentLoaded', function() {
 		}
 
 		removeActive();
-		activeSlide(slideIndex);
+		addActiveSlide(slideIndex);
 	});
 
+	activeSlide.addEventListener('mousedown', (e) => {
+		e.preventDefault();
+		let posX = e.clientX;
+		// console.log(posX);
 
-	function activeSlide(index) {
+		activeSlide.addEventListener('mousemove', (e) => {
+			console.log(e.clientX);
+			// if(e.clientX > posX) {
+			// 	console.log('yes');
+			// 	adjustMediaNextBtn();
+			// 	track.style.transform = `translateX(${offset}px)`;
+			// 	slide[slideIndex].style.transform = `scale(${1})`;
+	
+			// 	if(slideIndex > 0) {
+			// 		slide[slideIndex-1].style.transform = `scale(${0.60066})`;
+			// 	} else {
+			// 		slide[slide.length-1].style.transform = `scale(${0.60066})`;
+			// 	}
+	
+			// 	removeActive();
+			// 	addActiveSlide(slideIndex);
+			// }
+		});
+		
+
+		
+		
+
+	});
+
+	activeSlide.addEventListener('mouseup', (e) => {
+		activeSlide.removeEventListener('mousemove', (e) => {
+			console.log(e.clientX);
+		});
+			
+			
+	});
+
+	function adjustMediaNextBtn () {
+		if (window.matchMedia('(max-width: 767px)').matches) {
+			if (offset <= (-(itemWidth) * (slide.length-1))) {
+				offset = 0;
+				slideIndex = 0;
+			} else {
+				offset -= +movePosition;
+				slideIndex += (1*slidesToScroll);
+			}
+		}else {
+			if (offset <= (-(itemWidth) * (slide.length-2))) {
+				offset = itemWidth*slidesToScroll;
+				slideIndex = 0;
+			} else {
+				offset -= +movePosition;
+				slideIndex += (1*slidesToScroll);
+			}
+		}
+	}
+
+	function adjustMediaPrevBtn () {
+		if(window.matchMedia('(max-width: 767px)').matches) {
+			if (offset >= 0) {
+				offset = (-(itemWidth) * (slide.length-1)); //так как при загрузке страницы центральный кадр не первый слайд в html
+				slideIndex = slide.length - 1;				//то офсет на движение track сдвигаем на 2 слайда
+			} else {
+				offset += +movePosition;
+				slideIndex -= (1*slidesToScroll);
+			}
+		}else {
+			if (offset >= itemWidth) {
+				offset = (-(itemWidth) * (slide.length-2)); //так как при загрузке страницы центральный кадр не первый слайд в html
+				slideIndex = slide.length - 1;				//то офсет на движение track сдвигаем на 2 слайда
+			} else {
+				offset += +movePosition;
+				slideIndex -= (1*slidesToScroll);
+			}
+		}
+	}
+
+	
+	function addActiveSlide(index) {
 		slide[index].classList.add('active');
 	}
 	function removeActive() {
@@ -128,8 +210,7 @@ window.addEventListener('DOMContentLoaded', function() {
 	// promo Hamburger
 
 	const hamburger = document.querySelector('.promo__hamburger'),
-		  menu = document.querySelector('.promo__nav'),
-		  lines = document.querySelectorAll('.promo__hamburger-line');
+		  menu = document.querySelector('.promo__nav');
 
 	hamburger.addEventListener('click', () => {
 		menu.classList.toggle('opened');

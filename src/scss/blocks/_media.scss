@@ -215,10 +215,21 @@
         }
         &__hamburger {
             display: block;
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            z-index: 1000;
+            &_active {
+                position: fixed;
+                top: 75px;
+                right: 40px;
+            }
         }
         &__row {
+           
             &:first-child {
                 justify-content: space-between;
+                position: relative;
             }
         }
         &__descr {
@@ -235,11 +246,128 @@
         }
         
     }
+
+    .agent {
+        padding: 58px 10px 76px 10px;
+    }
+
+    .consultation {
+        .feed-form__inputs-wrapper {
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            .input-wrapper {
+                margin: 0 0 10px 0;
+            }
+            .feed-form__input {
+                width: 100%;
+            }
+        }
+    }
+
+    .workus {
+        &__title {
+            font-size: 14px;
+        }
+        &__descr {
+            font-size: 12px;
+        }
+    }
+
+    .questions {
+        .feed-form__inputs-wrapper_space {
+            flex-direction: column;
+            align-items: center;
+        }
+        .feed-form__input {
+            width: inherit;
+            margin-bottom: 5px;
+        }
+    }
+
+    .footer {
+        &__info {
+            flex-direction: column;
+            align-items: inherit;
+        }
+        &__name {
+            span {
+                font-size: 15px;
+            }
+        }
+    }
+
     .opened {
+        z-index: 1000;
         opacity: 1;
     }
-    .opened-hamb {
-       display: none;
-    }
     
+}
+
+@media (max-width: 575px) {
+    .title {
+        font-size: 19px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+    .promo {
+        &__hamburger {
+            &_active {
+                top: 70px;
+                right: 95px;
+            }
+        }
+        &__row {
+            margin-bottom: 20px;
+        }
+        &__descr {
+            &-subtitle1 {
+                display: none;
+            }
+            &-title {
+                text-align: center;
+                font-size: 32px;
+            }
+            &-subtitle2 {
+                font-size: 20px;
+                text-align: center;
+            }
+        }
+        &__services {
+            display: none;
+        }
+    }
+
+    .advantages {
+        &__row {
+            flex-direction: column;
+        }
+        &__item {
+            width: 100%;
+            padding: 0;
+        }
+    }
+
+    .work {
+        &__img {
+            width: 100%;
+        }
+    }
+
+    .costs {
+        &__card {
+            height: auto;
+        }
+    }
+
+    .workus {
+        &__row {
+            flex-direction: column;
+        }
+        &__item {
+            width: 100%;
+        }
+    }
 }
