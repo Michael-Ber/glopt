@@ -1,6 +1,6 @@
 .promo {
     min-height: 680px;
-    background: url('../../img/bg/firstScreenBG.jpg') center (center/cover) no-repeat;
+    background: url('./../img/bg/firstScreenBG.jpg') center (center/cover) no-repeat;
     padding: 23px 0 82px 0; //100px
     &__logo {
         width: 96px;
@@ -205,14 +205,8 @@
                     transition: .5s all;
                 }
             }
-            
         }
-        
-        
-        
     }
-
-
 }
 
 

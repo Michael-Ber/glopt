@@ -191,9 +191,6 @@
 }
 
 @media (max-width: 767px) {
-    
-    
-
     .promo {
         &__nav {
             opacity: 0;
@@ -247,9 +244,7 @@
                 font-size: 25px;
             }
         }
-        
     }
-
     .agent {
         padding: 58px 10px 76px 10px;
     }
@@ -319,7 +314,7 @@
         &__hamburger {
             &_active {
                 top: 70px;
-                right: 95px;
+                right: 50px;
             }
         }
         &__row {

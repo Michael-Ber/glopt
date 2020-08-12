@@ -15,6 +15,7 @@ window.addEventListener('DOMContentLoaded', function() {
 		offset = 0,
 		posX,
 		slideIndex = 1;
+
 	if(window.matchMedia('(max-width: 767px)').matches) {
 		itemWidth = (+(window.getComputedStyle(container).width).slice(0, -2));
 		track.style.width = `${100 * slide.length}%`;
@@ -22,11 +23,13 @@ window.addEventListener('DOMContentLoaded', function() {
 		itemWidth = (+(window.getComputedStyle(container).width).slice(0, -2)) / 3;
 	}
 	const movePosition = itemWidth * slidesToScroll;
+
 	if(window.matchMedia('(max-width: 767px)').matches) {
 		slideIndex = 0;
 		slide[slideIndex].classList.add('active');
 		slide[slideIndex+1].classList.remove('active');
 	}
+
 	slide.forEach((slide) => {
 		slide.style.minWidth = `${itemWidth}px`;
 		slide.style.transform = `scale(${0.60066})`;
@@ -34,14 +37,9 @@ window.addEventListener('DOMContentLoaded', function() {
 			slide.style.transform = `scale(${1})`;
 		}
 	});
+
 	prev.addEventListener('click', () => {
-		if (offset >= 0) {
-			offset = (-(itemWidth) * (slide.length-1)); //так как при загрузке страницы центральный кадр не первый слайд в html
-			slideIndex = slide.length - 1;				//то офсет на движение track сдвигаем на 2 слайда
-		} else {
-			offset += +movePosition;
-			slideIndex -= (1*slidesToScroll);
-		}
+		adjustMediaPrevBtn();
 		console.log(offset, slideIndex);
 		track.style.transform = `translateX(${offset}px)`;
 		slide[slideIndex].style.transform = `scale(${1})`; //central frame scale=1 opacity=1
@@ -55,6 +53,7 @@ window.addEventListener('DOMContentLoaded', function() {
 		addActiveSlide(slideIndex);
 
 	});
+
     next.addEventListener('click', () => {
 
 		adjustMediaNextBtn();
@@ -71,57 +70,6 @@ window.addEventListener('DOMContentLoaded', function() {
 		removeActive();
 		addActiveSlide(slideIndex);
 	});
-
-	activeSlide.addEventListener('mousedown', (e) => {
-		e.preventDefault();
-		posX = e.clientX;
-
-		activeSlide.addEventListener('mousemove', (e) => {
-			if(posX < e.clientX) {
-			
-				adjustMediaNextBtn();
-				track.style.transform = `translateX(${offset}px)`;
-				slide[slideIndex].style.transform = `scale(${1})`;
-	
-				if(slideIndex > 0) {
-					slide[slideIndex-1].style.transform = `scale(${0.60066})`;
-				} else {
-					slide[slide.length-1].style.transform = `scale(${0.60066})`;
-				}
-	
-				removeActive();
-				addActiveSlide(slideIndex);
-				
-			}
-		});
-
-		
-		// activeSlide.addEventListener('mousemove', (e) => {
-		// 	console.log(e.clientX);
-		// 	// if(e.clientX > posX) {
-		// 	// 	console.log('yes');
-		// 	// 	adjustMediaNextBtn();
-		// 	// 	track.style.transform = `translateX(${offset}px)`;
-		// 	// 	slide[slideIndex].style.transform = `scale(${1})`;
-	
-		// 	// 	if(slideIndex > 0) {
-		// 	// 		slide[slideIndex-1].style.transform = `scale(${0.60066})`;
-		// 	// 	} else {
-		// 	// 		slide[slide.length-1].style.transform = `scale(${0.60066})`;
-		// 	// 	}
-	
-		// 	// 	removeActive();
-		// 	// 	addActiveSlide(slideIndex);
-		// 	// }
-		// });
-
-	});
-	activeSlide.addEventListener('mouseup', (e) => {
-		e.preventDefault();
-
-		
-	});
-	
 
 	function adjustMediaNextBtn () {
 		if (window.matchMedia('(max-width: 767px)').matches) {
@@ -175,10 +123,6 @@ window.addEventListener('DOMContentLoaded', function() {
 
 	//form validation
 	let consForm = document.querySelector('.feed-form__input');
-		  
-	
-	
-
 	consForm.addEventListener('resize', () => {
 		let lineLeft = document.querySelector('.consultation__line-left');
 		let length = +(window.getComputedStyle(consForm).height).slice(0, -2);
@@ -231,11 +175,6 @@ window.addEventListener('DOMContentLoaded', function() {
 		hamburger.classList.toggle('promo__hamburger_active');
 		
 	});
-
-	
-	
-	
-
 });
 
 

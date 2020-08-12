@@ -13,7 +13,7 @@
         margin: 0 auto;
         &:before {
             content: '';
-            background: url('../../icons/man_in_suit.png') center (center/cover) no-repeat;
+            background: url('./../icons/man_in_suit.png') center (center/cover) no-repeat;
             position: absolute;
             top: 50%;
             transform: translate(-50%, -50%);
@@ -29,13 +29,13 @@
             border: 1px solid $main-color;
             z-index: 1000;
             &:before {
-                background: url('../../icons/woman.png') center (center/cover) no-repeat;
+                background: url('./../icons/woman.png') center (center/cover) no-repeat;
             }
             // margin: 0 auto;
         }
         &_managers {
             &:before {
-                background: url('../../icons/managers.png') center (center/cover) no-repeat;
+                background: url('./../icons/managers.png') center (center/cover) no-repeat;
             }
         }
     }

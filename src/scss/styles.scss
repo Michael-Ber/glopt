@@ -1,13 +1,7 @@
 @import "libs/bootstrap-reboot.min";
-// @import "slick.scss";
-// @import "owl.carousel.scss";
-
-
-
-
-@import "base/variables";
 @import "libs/fonts";
 
+@import "base/variables";
 * {
     font-family: 'Roboto';
 }
@@ -41,4 +35,5 @@
 @import "blocks/comments";
 @import "blocks/questions";
 @import "blocks/footer";
+@import "blocks/address";
 @import "blocks/media";
