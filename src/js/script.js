@@ -13,6 +13,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 	let itemWidth,
 		offset = 0,
+		posX,
 		slideIndex = 1;
 	if(window.matchMedia('(max-width: 767px)').matches) {
 		itemWidth = (+(window.getComputedStyle(container).width).slice(0, -2));
@@ -73,41 +74,54 @@ window.addEventListener('DOMContentLoaded', function() {
 
 	activeSlide.addEventListener('mousedown', (e) => {
 		e.preventDefault();
-		let posX = e.clientX;
-		// console.log(posX);
+		posX = e.clientX;
 
 		activeSlide.addEventListener('mousemove', (e) => {
-			console.log(e.clientX);
-			// if(e.clientX > posX) {
-			// 	console.log('yes');
-			// 	adjustMediaNextBtn();
-			// 	track.style.transform = `translateX(${offset}px)`;
-			// 	slide[slideIndex].style.transform = `scale(${1})`;
+			if(posX < e.clientX) {
+			
+				adjustMediaNextBtn();
+				track.style.transform = `translateX(${offset}px)`;
+				slide[slideIndex].style.transform = `scale(${1})`;
 	
-			// 	if(slideIndex > 0) {
-			// 		slide[slideIndex-1].style.transform = `scale(${0.60066})`;
-			// 	} else {
-			// 		slide[slide.length-1].style.transform = `scale(${0.60066})`;
-			// 	}
+				if(slideIndex > 0) {
+					slide[slideIndex-1].style.transform = `scale(${0.60066})`;
+				} else {
+					slide[slide.length-1].style.transform = `scale(${0.60066})`;
+				}
 	
-			// 	removeActive();
-			// 	addActiveSlide(slideIndex);
-			// }
+				removeActive();
+				addActiveSlide(slideIndex);
+				
+			}
 		});
-		
 
 		
-		
+		// activeSlide.addEventListener('mousemove', (e) => {
+		// 	console.log(e.clientX);
+		// 	// if(e.clientX > posX) {
+		// 	// 	console.log('yes');
+		// 	// 	adjustMediaNextBtn();
+		// 	// 	track.style.transform = `translateX(${offset}px)`;
+		// 	// 	slide[slideIndex].style.transform = `scale(${1})`;
+	
+		// 	// 	if(slideIndex > 0) {
+		// 	// 		slide[slideIndex-1].style.transform = `scale(${0.60066})`;
+		// 	// 	} else {
+		// 	// 		slide[slide.length-1].style.transform = `scale(${0.60066})`;
+		// 	// 	}
+	
+		// 	// 	removeActive();
+		// 	// 	addActiveSlide(slideIndex);
+		// 	// }
+		// });
 
 	});
-
 	activeSlide.addEventListener('mouseup', (e) => {
-		activeSlide.removeEventListener('mousemove', (e) => {
-			console.log(e.clientX);
-		});
-			
-			
+		e.preventDefault();
+
+		
 	});
+	
 
 	function adjustMediaNextBtn () {
 		if (window.matchMedia('(max-width: 767px)').matches) {
