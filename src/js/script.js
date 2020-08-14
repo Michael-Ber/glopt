@@ -18,6 +18,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 		let itemWidth,
 			offset = 0,
+			posInit,
 			posX,
 			slideIndex = 1;
 
@@ -81,6 +82,9 @@ window.addEventListener('DOMContentLoaded', function() {
 			addActiveSlide(slideIndex);
 		});
 
+
+		
+
 		function adjustMediaNextBtn () {
 			if (window.matchMedia('(max-width: 767px)').matches) {
 				if (offset <= (-(itemWidth) * (slide.length-1))) {
@@ -121,6 +125,53 @@ window.addEventListener('DOMContentLoaded', function() {
 			}
 		}
 
+		activeSlide.addEventListener('mousedown', function (e) {
+			posInit= e.clientX;
+			activeSlide.addEventListener('mousemove', function(e) {
+				posX = e.clientX;
+				if(posX < posInit) {
+					adjustMediaNextBtn();
+					console.log(offset, slideIndex);
+					track.style.transform = `translateX(${offset}px)`;
+					slide[slideIndex].style.transform = `scale(${1})`;
+
+					if(slideIndex > 0) {
+						slide[slideIndex-1].style.transform = `scale(${0.60066})`;
+					} else {
+						slide[slide.length-1].style.transform = `scale(${0.60066})`;
+					}
+
+					removeActive();
+					addActiveSlide(slideIndex);
+					
+				}
+				
+			})
+			activeSlide.addEventListener('mouseup', function() {
+				activeSlide.removeEventListener('mousemove', function(e) {
+					posX = e.clientX;
+					if(posX < posInit) {
+						adjustMediaNextBtn();
+						console.log(offset, slideIndex);
+						track.style.transform = `translateX(${offset}px)`;
+						slide[slideIndex].style.transform = `scale(${1})`;
+	
+						if(slideIndex > 0) {
+							slide[slideIndex-1].style.transform = `scale(${0.60066})`;
+						} else {
+							slide[slide.length-1].style.transform = `scale(${0.60066})`;
+						}
+	
+						removeActive();
+						addActiveSlide(slideIndex);
+						
+					}
+					
+				})
+			})
+		});
+
+		
 	
 		function addActiveSlide(index) {
 			slide[index].classList.add('active');
@@ -130,6 +181,7 @@ window.addEventListener('DOMContentLoaded', function() {
 				slide.classList.remove('active');
 			});
 		}
+
 	}
 
 	callSlider();
