@@ -86,14 +86,20 @@ window.addEventListener('DOMContentLoaded', function() {
 			threshold = 200,
 			moving = false;
 
-		document.addEventListener('mousedown', swipeStart);
-		document.addEventListener('touchstart', swipeStart);
+		if(window.PointerEvent) {
+			document.addEventListener('pointerdown', swipeStart);
+			document.addEventListener('pointermove', swipeAction);
+			document.addEventListener('pointerup', swipeEnd);
+		}else {
+			document.addEventListener('mousedown', swipeStart);
+			document.addEventListener('touchstart', swipeStart);
 
-		document.addEventListener('mousemove', swipeAction);
-		document.addEventListener('touchmove', swipeAction);
+			document.addEventListener('mousemove', swipeAction);
+			document.addEventListener('touchmove', swipeAction);
 
-		document.addEventListener('mouseup', swipeEnd);
-		document.addEventListener('touchend', swipeEnd);
+			document.addEventListener('mouseup', swipeEnd);
+			document.addEventListener('touchend', swipeEnd);
+		}
 
 		function swipeStart(e) {
 			posXInit = e.clientX;
@@ -107,13 +113,16 @@ window.addEventListener('DOMContentLoaded', function() {
 				posXCurrent = e.clientX;
 				diff = posXInit - posXCurrent;
 				track.style.transform = `translateX(${offset - diff}px)`;
+				
 
 				if(window.matchMedia('(max-width: 767px)').matches) {
 					threshold = 100;
 				}
-				console.log(diff);
-				if(diff < (-threshold)) {
 
+				console.log(diff, threshold, moving);
+
+				if(diff < (-threshold)) {
+					console.log('minus');
 					adjustMediaPrevBtn();
 
 					track.style.transform = `translateX(${offset}px)`;
@@ -131,7 +140,7 @@ window.addEventListener('DOMContentLoaded', function() {
 					moving = false;
 				}
 				if(diff > threshold) {
-
+					console.log('plus');
 					adjustMediaNextBtn();
 
 					track.style.transform = `translateX(${offset}px)`;
@@ -148,14 +157,15 @@ window.addEventListener('DOMContentLoaded', function() {
 
 					moving = false;
 				} 
-			} else {
-				track.style.transform = `translateX(${offset}px)`; // возвращает экран если не пересекли пороговое значение
 			}
 		}
 
 		function swipeEnd() {
+			console.log('end');
 			moving = false;
+			track.style.transform = `translateX(${offset}px)`; // возвращает экран если не пересекли пороговое значение
 			track.style.cursor = 'grab';
+			
 		}
 	
 		function addActiveSlide(index) {

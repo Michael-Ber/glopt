@@ -18,6 +18,7 @@
             transition: .5s all;
             cursor: grab;
             user-select: none; // чтобы текст не выделялся при прокрутке мышью
+            touch-action: none;
         }
         &-slide {
             margin: 0 auto;
