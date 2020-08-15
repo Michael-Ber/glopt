@@ -18,6 +18,14 @@
     line-height: 0;
 }
 
+.grab {
+    cursor: grab;
+}
+
+.grabbing {
+    cursor: grabbing;
+}
+
 
 @import "base/button";
 @import "base/red-line";

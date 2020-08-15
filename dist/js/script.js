@@ -8,18 +8,16 @@ window.addEventListener('DOMContentLoaded', function() {
   // проработать slidesToScroll
 	function callSlider() {
 		const track = document.querySelector('.comments__slider-track'),
-		slidesToShow = 1,
-		slidesToScroll = 1,
-		slide = document.querySelectorAll('.comments__slider-slide'),
-		container = document.querySelector('.comments__slider-container'),
-		prev = document.querySelector('.prevArrow'),
-		next = document.querySelector('.nextArrow'),
-		activeSlide = document.querySelector('.comments__slider-slide.active');
+			slidesToShow = 1,
+			slidesToScroll = 1,
+			slide = document.querySelectorAll('.comments__slider-slide'),
+			container = document.querySelector('.comments__slider-container'),
+			prev = document.querySelector('.prevArrow'),
+			next = document.querySelector('.nextArrow');
+			
 
 		let itemWidth,
 			offset = 0,
-			posInit,
-			posX,
 			slideIndex = 1;
 
 		if(window.matchMedia('(max-width: 767px)').matches) {
@@ -82,11 +80,97 @@ window.addEventListener('DOMContentLoaded', function() {
 			addActiveSlide(slideIndex);
 		});
 
+		let posXInit,
+			posXCurrent,
+			diff,
+			threshold = 200,
+			moving = false;
 
+		document.addEventListener('mousedown', swipeStart);
+		document.addEventListener('touchstart', swipeStart);
+
+		document.addEventListener('mousemove', swipeAction);
+		document.addEventListener('touchmove', swipeAction);
+
+		document.addEventListener('mouseup', swipeEnd);
+		document.addEventListener('touchend', swipeEnd);
+
+		function swipeStart(e) {
+			posXInit = e.clientX;
+			moving = true;
+			track.style.cursor = 'grabbing';
+		}
 		
+		function swipeAction(e) {
+			if (moving) {
+
+				posXCurrent = e.clientX;
+				diff = posXInit - posXCurrent;
+				track.style.transform = `translateX(${offset - diff}px)`;
+
+				if(window.matchMedia('(max-width: 767px)').matches) {
+					threshold = 100;
+				}
+				console.log(diff);
+				if(diff < (-threshold)) {
+
+					adjustMediaPrevBtn();
+
+					track.style.transform = `translateX(${offset}px)`;
+					slide[slideIndex].style.transform = `scale(${1})`; //central frame scale=1 opacity=1
+
+					if(slideIndex <= slide.length-2) {
+						slide[slideIndex+1].style.transform = `scale(${0.60066})`; //autoScale for small frames
+					} else {
+						slide[0].style.transform = `scale(${0.60066})`;
+					}
+
+					removeActive();
+					addActiveSlide(slideIndex);
+
+					moving = false;
+				}
+				if(diff > threshold) {
+
+					adjustMediaNextBtn();
+
+					track.style.transform = `translateX(${offset}px)`;
+					slide[slideIndex].style.transform = `scale(${1})`;
+
+					if(slideIndex > 0) {
+						slide[slideIndex-1].style.transform = `scale(${0.60066})`;
+					} else {
+						slide[slide.length-1].style.transform = `scale(${0.60066})`;
+					}
+
+					removeActive();
+					addActiveSlide(slideIndex);
+
+					moving = false;
+				} 
+			} else {
+				track.style.transform = `translateX(${offset}px)`; // возвращает экран если не пересекли пороговое значение
+			}
+		}
+
+		function swipeEnd() {
+			moving = false;
+			track.style.cursor = 'grab';
+		}
+	
+		function addActiveSlide(index) {
+			slide[index].classList.add('active');
+		}
+
+		function removeActive() {
+			slide.forEach((slide) => {
+				slide.classList.remove('active');
+			});
+		}
 
 		function adjustMediaNextBtn () {
 			if (window.matchMedia('(max-width: 767px)').matches) {
+
 				if (offset <= (-(itemWidth) * (slide.length-1))) {
 					offset = 0;
 					slideIndex = 0;
@@ -107,6 +191,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 		function adjustMediaPrevBtn () {
 			if(window.matchMedia('(max-width: 767px)').matches) {
+				
 				if (offset >= 0) {
 					offset = (-(itemWidth) * (slide.length-1)); //так как при загрузке страницы центральный кадр не первый слайд в html
 					slideIndex = slide.length - 1;				//то офсет на движение track сдвигаем на 2 слайда
@@ -123,63 +208,6 @@ window.addEventListener('DOMContentLoaded', function() {
 					slideIndex -= (1*slidesToScroll);
 				}
 			}
-		}
-
-		activeSlide.addEventListener('mousedown', function (e) {
-			posInit= e.clientX;
-			activeSlide.addEventListener('mousemove', function(e) {
-				posX = e.clientX;
-				if(posX < posInit) {
-					adjustMediaNextBtn();
-					console.log(offset, slideIndex);
-					track.style.transform = `translateX(${offset}px)`;
-					slide[slideIndex].style.transform = `scale(${1})`;
-
-					if(slideIndex > 0) {
-						slide[slideIndex-1].style.transform = `scale(${0.60066})`;
-					} else {
-						slide[slide.length-1].style.transform = `scale(${0.60066})`;
-					}
-
-					removeActive();
-					addActiveSlide(slideIndex);
-					
-				}
-				
-			})
-			activeSlide.addEventListener('mouseup', function() {
-				activeSlide.removeEventListener('mousemove', function(e) {
-					posX = e.clientX;
-					if(posX < posInit) {
-						adjustMediaNextBtn();
-						console.log(offset, slideIndex);
-						track.style.transform = `translateX(${offset}px)`;
-						slide[slideIndex].style.transform = `scale(${1})`;
-	
-						if(slideIndex > 0) {
-							slide[slideIndex-1].style.transform = `scale(${0.60066})`;
-						} else {
-							slide[slide.length-1].style.transform = `scale(${0.60066})`;
-						}
-	
-						removeActive();
-						addActiveSlide(slideIndex);
-						
-					}
-					
-				})
-			})
-		});
-
-		
-	
-		function addActiveSlide(index) {
-			slide[index].classList.add('active');
-		}
-		function removeActive() {
-			slide.forEach((slide) => {
-				slide.classList.remove('active');
-			});
 		}
 
 	}

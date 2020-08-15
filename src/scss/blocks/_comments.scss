@@ -16,12 +16,13 @@
             justify-content: flex-start;
             align-items: center;
             transition: .5s all;
+            cursor: grab;
+            user-select: none; // чтобы текст не выделялся при прокрутке мышью
         }
         &-slide {
             margin: 0 auto;
             opacity: .3;
             transition: .5s all;
-            cursor: pointer;
         } 
         &-nav {
             display: block;
