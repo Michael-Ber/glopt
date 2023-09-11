@@ -1,0 +1,79 @@
+.comments {
+    min-height: 470px;
+    padding: 51px 0 65px 0;
+
+    &__slider {
+        &-wrapper {
+            width: calc(100% - 101px);
+            margin: 0 auto;
+            position: relative;
+        }
+        &-container {
+            overflow: hidden;
+        }
+        &-track {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            transition: .5s all;
+            cursor: grab;
+            user-select: none; // чтобы текст не выделялся при прокрутке мышью
+            touch-action: none;
+        }
+        &-slide {
+            margin: 0 auto;
+            opacity: .3;
+            transition: .5s all;
+        } 
+        &-nav {
+            display: block;
+        }
+    }
+    
+    &__img {
+        margin-bottom: 19px;
+        width: 114px;
+        margin: 0 auto;
+    }
+    &__name {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #3a3a3a;
+        margin-bottom: 14px;
+    }
+    &__descr {
+        font-size: 14px;
+        font-weight: 300;
+        text-align: center;
+    }
+    &__arrows {
+        width: 210px;
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 50%);
+        top: 0;
+        z-index: 1000;
+    }
+    
+}
+.active {
+    width: calc(100%/3);
+    opacity: 1;
+    transform: scale(1);
+    
+}
+.prevArrow {
+    width: 14px;
+    height: 46px;
+    background: url('./assets/icons/left.png') center (center/cover) no-repeat;
+    border: none;
+}
+.nextArrow {
+    width: 14px;
+    height: 46px;
+    background: url('./assets/icons/right.png') center (center/cover) no-repeat;
+    border: none;
+}

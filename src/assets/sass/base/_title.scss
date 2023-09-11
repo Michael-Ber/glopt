@@ -1,0 +1,52 @@
+.title {
+    font-size: 26px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #2e2e2e;
+    text-align: center;
+    margin-bottom: 31px;
+    &_mb20 {
+        margin-bottom: 20px;
+    }
+    &_wht {
+        color: #fff;
+        font-size: 26px;
+        font-weight: 700;
+        text-transform: none;
+        line-height: 26px;
+        margin-bottom: 22px;
+    }
+    &_consultation {
+        font-size: 28px;
+        font-weight: 400;
+        color: #3a3a3a;
+        text-transform: none;
+        margin-bottom: 71px;
+        &:after {
+            content: '';
+            background: url('./assets/icons/woman.png') center (center/cover) no-repeat;
+            position: absolute;
+        }
+    }
+}
+
+.subtitle {
+    font-size: 21px;
+    font-weight: 300;
+    line-height: 24px;
+    color: #2e2e2e;
+    width: 100%; //880px
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 37px;
+    &_wht {
+        color: #fff;
+        font-size: 19px;
+        line-height: 27px;
+        font-weight: 300;
+        margin: 0 auto;
+    }
+    &_costs {
+        margin-bottom: 34px;
+    }
+}
